@@ -1,4 +1,4 @@
-const { ApolloServer, gql } = require('apollo-server');
+const { ApolloServer, gql, MockList } = require('apollo-server');
 const casual = require('casual');
 
 const typeDefs = gql`
@@ -24,12 +24,16 @@ const mocks = {
     name: () => casual.name,
     age: () => casual.integer(0, 120),
   }),
+  Query: () => ({
+    users: () => new MockList([0, 12]),
+  }),
 };
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
   mocks,
+  // mockEntireSchema: false,
 });
 
 server.listen().then(({ url }) => {
