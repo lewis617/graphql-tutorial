@@ -1,9 +1,5 @@
 const { ApolloServer, gql } = require('apollo-server');
-
-const users = [
-  { id: '1', name: '李雷', age: 12 },
-  { id: '2', name: '韩梅梅', isSingle: true },
-]
+const casual = require('casual');
 
 const typeDefs = gql`
   type User {
@@ -18,11 +14,24 @@ const typeDefs = gql`
 `;
 const resolvers = {
   Query: {
-    users: () => users,
+    users: () => [],
   },
 };
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const mocks = {
+  // String: () => casual.word,
+  User: () => ({
+    name: () => casual.name,
+    age: () => casual.integer(0, 120),
+  }),
+};
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  mocks,
+});
+
 server.listen().then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
 });
