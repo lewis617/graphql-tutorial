@@ -9,17 +9,22 @@ const typeDefs = gql`
     isSingle: Boolean
   }
   type Query {
+    user(name: String): User
     users: [User]
   }
 `;
 const resolvers = {
   Query: {
+    user: (parent, args) => {
+      console.log(parent, args);
+      return { name: args.name };
+    },
     users: () => [],
   },
 };
 
 const mocks = {
-  // String: () => casual.word,
+  String: () => casual.word,
   User: () => ({
     name: () => casual.name,
     age: () => casual.integer(0, 120),
@@ -33,7 +38,8 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   mocks,
-  // mockEntireSchema: false,
+  mockEntireSchema: false,
+  rootValue: { name: 'rootValue' },
 });
 
 server.listen().then(({ url }) => {
