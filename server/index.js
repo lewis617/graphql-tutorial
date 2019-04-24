@@ -24,14 +24,40 @@ const typeDefs = gql`
       ): User
     users: [User]
   }
+  type Mutation {
+    createUser(user: CreateUserInput!): User,
+    updateUser(user: UpdateUserInput!): User,
+    deleteUser(user: DeleteUserInput!): User,
+  }
+  input CreateUserInput {
+    name: String!
+  }
+  input UpdateUserInput {
+    id: ID!
+    name: String
+  }
+  input DeleteUserInput {
+    id: ID!
+  }
 `;
 const resolvers = {
   Query: {
-    user: (parent, args) => {
-      console.log(parent, args);
+    user: (parent, args) => ({ name: args.name }),
+    users: () => [],
+  },
+  Mutation: {
+    createUser: (parent, args) => {
+      console.log('createUser args: ', args);
       return { name: args.name };
     },
-    users: () => [],
+    updateUser: (parent, args) => {
+      console.log('updateUser args: ', args);
+      return { id: args.id };
+    },
+    deleteUser: (parent, args) => {
+      console.log('deleteUser args: ', args);
+      return { id: args.id };
+    },
   },
 };
 
