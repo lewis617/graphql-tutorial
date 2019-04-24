@@ -4,7 +4,7 @@ module.exports = gql`
   "用户类型"
   type User {
     "用户ID"
-    id: ID!
+    _id: ID!
     "用户名称"
     name: String!
     "用户年龄"
@@ -17,10 +17,7 @@ module.exports = gql`
     isSingle: Boolean
   }
   type Query {
-    user(
-      "参数：用户名称"
-      name: String
-      ): User
+    user(user: GetUserInput): User
     users: [User]
   }
   type Mutation {
@@ -28,14 +25,17 @@ module.exports = gql`
     updateUser(user: UpdateUserInput!): User,
     deleteUser(user: DeleteUserInput!): User,
   }
+  input GetUserInput {
+    _id: ID!
+  }
   input CreateUserInput {
     name: String!
   }
   input UpdateUserInput {
-    id: ID!
+    _id: ID!
     name: String
   }
   input DeleteUserInput {
-    id: ID!
+    _id: ID!
   }
 `;
