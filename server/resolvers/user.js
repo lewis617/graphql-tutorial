@@ -19,12 +19,10 @@ module.exports = {
   Mutation: {
     createUser: (parent, args) => new User(args.user).save(),
     updateUser: (parent, args, context) => {
-      if (!context.getUser()) { throw new AuthenticationError('没有登录'); }
       if (args.user._id !== context.getUser()._id) { throw new AuthenticationError('没有权限'); }
       return User.findByIdAndUpdate(args.user._id, args.user, { new: true });
     },
     deleteUser: (parent, args, context) => {
-      if (!context.getUser()) { throw new AuthenticationError('没有登录'); }
       if (args.user._id !== context.getUser()._id) { throw new AuthenticationError('没有权限'); }
       return User.findByIdAndRemove(args.user._id);
     },
