@@ -16,26 +16,37 @@ module.exports = gql`
     """
     isSingle: Boolean
   }
+  type Token {
+    "JWT Token，放在 Header 中传进来"
+    token: String!
+  }
   type Query {
     user(user: GetUserInput): User
     users: [User]
+    login(user: LoginInput!): Token!
   }
   type Mutation {
-    createUser(user: CreateUserInput!): User,
-    updateUser(user: UpdateUserInput!): User,
-    deleteUser(user: DeleteUserInput!): User,
+    createUser(user: CreateUserInput!): User
+    updateUser(user: UpdateUserInput!): User
+    deleteUser(user: DeleteUserInput!): User
   }
   input GetUserInput {
     _id: ID!
   }
   input CreateUserInput {
     name: String!
+    password: String!
   }
   input UpdateUserInput {
     _id: ID!
     name: String
+    password: String!
   }
   input DeleteUserInput {
     _id: ID!
+  }
+  input LoginInput{
+    name: String!
+    password: String!
   }
 `;
