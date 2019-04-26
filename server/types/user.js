@@ -21,14 +21,15 @@ module.exports = gql`
     token: String!
   }
   type Query {
-    user(user: GetUserInput): User
-    users: [User]
+    hello: String!
+    user(user: GetUserInput): User!
+    users: [User]!
     login(user: LoginInput!): Token!
   }
   type Mutation {
-    createUser(user: CreateUserInput!): User
-    updateUser(user: UpdateUserInput!): User
-    deleteUser(user: DeleteUserInput!): User
+    createUser(user: CreateUserInput!): User!
+    updateUser(user: UpdateUserInput!): User!
+    deleteUser(user: DeleteUserInput!): User!
   }
   input GetUserInput {
     _id: ID!

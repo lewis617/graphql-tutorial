@@ -1,14 +1,19 @@
-import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "react-apollo";
+import React from 'react';
+import PropTypes from 'prop-types';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/",
+  uri: 'http://localhost:4000/',
 });
 
-export default (props) => {
-  return (
-    <ApolloProvider client={client}>
-      {props.children}
-    </ApolloProvider>
-  );
-}
+const Layout = ({ children }) => (
+  <ApolloProvider client={client}>
+    {children}
+  </ApolloProvider>
+);
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export default Layout;
