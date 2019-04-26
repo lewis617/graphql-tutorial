@@ -17,8 +17,7 @@ const server = new ApolloServer({
   context: ({ req }) => {
     const getUser = () => {
       const { authorization } = req.headers;
-      if (!authorization || authorization.split(' ')[0] !== 'Bearer') { throw new Error('Invalid Authorization Header'); }
-      const token = authorization.split(' ')[1];
+      const token = authorization && (authorization.split(' ')[0] === 'Bearer') && authorization.split(' ')[1];
       const { _id, name } = jsonwebtoken.verify(token, secret);
       return { _id, name };
     };

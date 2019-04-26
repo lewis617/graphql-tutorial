@@ -15,6 +15,7 @@ module.exports = {
       const token = jsonwebtoken.sign({ _id, name }, secret, { expiresIn: '1d' });
       return { token };
     },
+    currentUser: (parent, args, context) => User.findById(context.getUser()._id),
   },
   Mutation: {
     createUser: (parent, args) => new User(args.user).save(),

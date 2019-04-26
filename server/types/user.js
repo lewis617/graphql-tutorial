@@ -1,6 +1,18 @@
 const { gql } = require('apollo-server');
 
 module.exports = gql`
+  type Query {
+    hello: String!
+    user(user: GetUserInput): User!
+    users: [User]!
+    login(user: LoginInput!): Token!
+    currentUser: User!
+  }
+  type Mutation {
+    createUser(user: CreateUserInput!): User!
+    updateUser(user: UpdateUserInput!): User!
+    deleteUser(user: DeleteUserInput!): User!
+  }
   "用户类型"
   type User {
     "用户ID"
@@ -19,17 +31,6 @@ module.exports = gql`
   type Token {
     "JWT Token，放在 Header 中传进来"
     token: String!
-  }
-  type Query {
-    hello: String!
-    user(user: GetUserInput): User!
-    users: [User]!
-    login(user: LoginInput!): Token!
-  }
-  type Mutation {
-    createUser(user: CreateUserInput!): User!
-    updateUser(user: UpdateUserInput!): User!
-    deleteUser(user: DeleteUserInput!): User!
   }
   input GetUserInput {
     _id: ID!

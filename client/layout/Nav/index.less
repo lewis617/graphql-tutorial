@@ -57,9 +57,16 @@
       }
     }
 
-    .login {
+    .login,
+    .userPage,
+    .logout {
       color: #42bd56;
       font-size: 16px;
+      flex: 1;
+      text-align: center;
+    }
+    .userPage{
+      border-right: 1px solid #e5e5e5;
     }
   }
 }
@@ -81,6 +88,7 @@
   input:-internal-autofill-selected {
     background-color: transparent !important;
   }
+
   input:focus {
     outline: none;
   }
