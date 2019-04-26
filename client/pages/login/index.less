@@ -1,3 +1,7 @@
+.loginContainer {
+  padding: 15px;
+}
+
 .loginCancel {
   height: 16px;
   width: 16px;
@@ -6,4 +10,65 @@
   position: absolute;
   top: 15px;
   left: 15px;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.tips {
+  margin-top: 10px;
+  color: #bababa;
+  font-size: 15px;
+  text-align: center;
+  margin-bottom: 30px;
+
+  >a {
+    color: #42bd56;
+  }
+}
+
+.formItems {
+  display: flex;
+  flex-direction: column;
+
+  >input {
+    border: none;
+    background: transparent;
+    padding: 10px 40px 10px 10px;
+    color: #494949;
+    font-size: 15px;
+    line-height: 24px;
+    caret-color: #42bd56;
+    border: 1px solid #ccc;
+
+    &[name=name] {
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+    }
+
+    &[name=password] {
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+      border-top: none;
+    }
+  }
+}
+
+.submit {
+  height: 44px;
+  width: 100%;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 44px;
+  text-align: center;
+  background-color: #42bd56;
+  color: #fff;
+  margin-top: 20px;
 }
