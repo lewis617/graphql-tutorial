@@ -8,14 +8,15 @@ const client = new ApolloClient({
   uri: 'http://localhost:4000/',
 });
 
-const Layout = ({ children }) => (
+const Layout = ({ children, location }) => (
   <ApolloProvider client={client}>
-    <Nav />
+    {location.pathname === '/login' ? null : <Nav />}
     {children}
   </ApolloProvider>
 );
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export default Layout;

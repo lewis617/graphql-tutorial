@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Link } from 'umi';
+import { Link, router } from 'umi';
 import styles from './index.less';
 
 class Nav extends PureComponent {
@@ -8,6 +8,11 @@ class Nav extends PureComponent {
   }
 
   toggleMenuContainer = () => this.setState(prev => ({ show: !prev.show }))
+
+  gotoLogin = () => {
+    this.toggleMenuContainer();
+    router.push('/login');
+  }
 
   render() {
     const { show } = this.state;
@@ -22,6 +27,9 @@ class Nav extends PureComponent {
             <div>
               <div className={styles.close} onClick={this.toggleMenuContainer}>关闭</div>
               <input className={styles.search} type="text" />
+            </div>
+            <div>
+              <div className={styles.login} onClick={this.gotoLogin}>登录豆瓣</div>
             </div>
           </div>
         )}
