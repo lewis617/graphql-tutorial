@@ -15,7 +15,7 @@ module.exports = gql`
   }
   type User {
     _id: ID!
-    name: String!
+    name: String
     avatarUrl: String
     location: String
     intro: String
@@ -34,7 +34,10 @@ module.exports = gql`
   input UpdateUserInput {
     _id: ID!
     name: String
-    password: String!
+    password: String
+    avatarUrl: String
+    location: String
+    intro: String
   }
   input DeleteUserInput {
     _id: ID!

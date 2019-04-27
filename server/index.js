@@ -13,7 +13,7 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   mocks,
-  mockEntireSchema: true,
+  mockEntireSchema: false,
   context: ({ req }) => {
     const getUser = () => {
       const { authorization } = req.headers;
