@@ -11,6 +11,7 @@ module.exports = {
       intro: () => casual.sentence,
       isFollowing: () => false,
       following: (parent, args) => new MockList(args.limit),
+      followers: (parent, args) => new MockList(args.limit),
       followingCount: () => casual.integer(0, 1000),
       followersCount: () => casual.integer(0, 1000),
     };
