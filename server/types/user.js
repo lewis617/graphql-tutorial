@@ -21,6 +21,10 @@ module.exports = gql`
     location: String
     intro: String
     isFollowing: Boolean
+    following(limit: Int skip: Int): [User]
+    followers(limit: Int skip: Int): [User]
+    followingCount: Int
+    followersCount: Int
   }
   type Token {
     "JWT Token，放在 Header 中传进来"

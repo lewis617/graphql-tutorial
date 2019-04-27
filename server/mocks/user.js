@@ -1,4 +1,5 @@
 const casual = require('casual');
+const { MockList } = require('apollo-server');
 
 module.exports = {
   User: () => {
@@ -9,6 +10,9 @@ module.exports = {
       location: () => casual.address,
       intro: () => casual.sentence,
       isFollowing: () => false,
+      following: (parent, args) => new MockList(args.limit),
+      followingCount: () => casual.integer(0, 1000),
+      followersCount: () => casual.integer(0, 1000),
     };
   },
 };
