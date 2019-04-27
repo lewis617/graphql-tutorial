@@ -6,7 +6,7 @@ const { secret } = require('../config');
 
 module.exports = {
   Query: {
-    user: (parent, args) => User.findById(args.user._id),
+    user: async (parent, args) => User.findById(args.user._id),
     users: () => User.find(),
     login: async (parent, args) => {
       const user = await User.findOne(args.user);
@@ -17,6 +17,21 @@ module.exports = {
     },
     currentUser: (parent, args, context) => User.findById(context.getUser()._id),
   },
+  User: {
+    following: async (parent) => {
+      const user = await User.findById(parent._id).select('+following').populate('following');
+      return user && user.following;
+    },
+    followers: parent => User.find({ following: parent._id }),
+    isFollowing: async (parent, args, context) => {
+      const user = await User.findOne({
+        _id: context.getUser()._id,
+        following: parent._id,
+      });
+      console.log(user);
+      return Boolean(user);
+    },
+  },
   Mutation: {
     createUser: (parent, args) => new User(args.user).save(),
     updateUser: (parent, args, context) => {
@@ -26,6 +41,22 @@ module.exports = {
     deleteUser: (parent, args, context) => {
       if (args.user._id !== context.getUser()._id) { throw new AuthenticationError('没有权限'); }
       return User.findByIdAndRemove(args.user._id);
+    },
+    follow: async (parent, args, context) => {
+      const me = await User.findById(context.getUser()._id).select('+following');
+      let isFollowing = false;
+      if (!me.following.map(id => id.toString()).includes(args.user._id)) {
+        me.following.push(args.user._id);
+        me.followingCount += 1;
+        await User.findByIdAndUpdate(args.user._id, { $inc: { followersCount: 1 } });
+        isFollowing = true;
+      } else {
+        me.following.splice(args.user._id, 1);
+        me.followingCount -= 1;
+        await User.findByIdAndUpdate(args.user._id, { $inc: { followersCount: -1 } });
+      }
+      me.save();
+      return { isFollowing };
     },
   },
 };

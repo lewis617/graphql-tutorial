@@ -42,7 +42,7 @@ const Layout = ({ children, location }) => (
   <ApolloProvider client={client}>
     <Query query={CURRENT_USER}>
       {({ loading, data }) => {
-        if (loading) { return false; }
+        if (loading) { return 'Loading...'; }
         return (
           <div>
             {location.pathname === '/login' ? null : <Nav currentUser={data ? data.currentUser : false} />}

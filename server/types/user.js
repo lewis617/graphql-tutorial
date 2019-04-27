@@ -12,7 +12,7 @@ module.exports = gql`
     createUser(user: CreateUserInput!): User!
     updateUser(user: UpdateUserInput!): User!
     deleteUser(user: UserIdInput!): User!
-    follow(user: UserIdInput): User!
+    follow(user: UserIdInput): IsFollowing!
   }
   type User {
     _id: ID!
@@ -29,6 +29,9 @@ module.exports = gql`
   type Token {
     "JWT Token，放在 Header 中传进来"
     token: String!
+  }
+  type IsFollowing{
+    isFollowing: Boolean
   }
   input UserIdInput {
     _id: ID!

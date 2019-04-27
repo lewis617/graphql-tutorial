@@ -42,7 +42,13 @@ const User = ({ match }) => (
                   cache.writeQuery({
                     query: USER,
                     variables: { id: userId },
-                    data: { user: { ...user, isFollowing: !isFollowing } },
+                    data: {
+                      user: {
+                        ...user,
+                        isFollowing: !isFollowing,
+                        followersCount: user.followersCount + (isFollowing ? -1 : 1),
+                      },
+                    },
                   });
                 }}
               >
