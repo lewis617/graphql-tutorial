@@ -19,6 +19,7 @@ module.exports = gql`
     avatarUrl: String
     location: String
     intro: String
+    isFollowing: Boolean
   }
   type Token {
     "JWT Token，放在 Header 中传进来"
