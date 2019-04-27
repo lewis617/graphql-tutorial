@@ -37,7 +37,7 @@ const FollowUsers = ({ user, isFollowingPage, fetchMore }) => {
           <div className={styles.name}>{item.name}</div>
         </Link>
       ))}
-      <div className={styles.fetchMore} onClick={fetchMore}>显示更多</div>
+      {list.length < count && <div className={styles.fetchMore} onClick={fetchMore}>显示更多</div>}
     </div>
   );
 };

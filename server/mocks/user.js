@@ -12,8 +12,8 @@ module.exports = {
       isFollowing: () => false,
       following: (parent, args) => new MockList(args.limit),
       followers: (parent, args) => new MockList(args.limit),
-      followingCount: () => casual.integer(0, 1000),
-      followersCount: () => casual.integer(0, 1000),
+      followingCount: () => casual.integer(0, 100),
+      followersCount: () => casual.integer(0, 100),
     };
   },
 };
