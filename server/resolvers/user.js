@@ -28,7 +28,6 @@ module.exports = {
         _id: context.getUser()._id,
         following: parent._id,
       });
-      console.log(user);
       return Boolean(user);
     },
   },
