@@ -1,10 +1,13 @@
 const casual = require('casual');
 
 module.exports = {
-  User: () => ({
-    name: () => casual.first_name,
-    avatarUrl: () => `//iph.href.lu/300x300?text=${casual.first_name}&bg=${casual.rgb_hex}`,
-    location: () => casual.address,
-    intro: () => casual.sentence,
-  }),
+  User: () => {
+    const name = casual.first_name;
+    return {
+      name: () => name,
+      avatarUrl: () => `//iph.href.lu/300x300?text=${name}&bg=${casual.rgb_hex.replace('#', '')}`,
+      location: () => casual.address,
+      intro: () => casual.sentence,
+    };
+  },
 };
