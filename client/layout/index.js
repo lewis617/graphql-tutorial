@@ -4,10 +4,11 @@ import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { createHttpLink } from 'apollo-link-http';
 import { setContext } from 'apollo-link-context';
-import { ApolloProvider } from 'react-apollo';
+import { ApolloProvider, Query } from 'react-apollo';
 import { onError } from 'apollo-link-error';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { CURRENT_USER } from '../graphql/user';
 import Nav from '../components/Nav';
 
 const httpLink = createHttpLink({
@@ -37,16 +38,24 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const Layout = ({ children, location }) => (
+const Layout = ({ children }) => (
   <ApolloProvider client={client}>
-    {location.pathname === '/login' ? null : <Nav />}
-    {children}
+    <Query query={CURRENT_USER}>
+      {({ loading, data }) => {
+        if (loading) { return false; }
+        return (
+          <div>
+            <Nav currentUser={data ? data.currentUser : false} />
+            {children}
+          </div>
+        );
+      }}
+    </Query>
     <ToastContainer />
   </ApolloProvider>
 );
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  location: PropTypes.object.isRequired,
 };
 
 export default Layout;

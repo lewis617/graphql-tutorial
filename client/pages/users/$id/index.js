@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Query, Mutation } from 'react-apollo';
 import { Link } from 'umi';
-import { USER, CURRENT_USER, FOLLOW } from '../../graphql/user';
-import styles from './$id.less';
+import { USER, CURRENT_USER, FOLLOW } from '../../../graphql/user';
+import styles from './index.less';
 
 const User = ({ match }) => (
   <Query
@@ -21,9 +21,12 @@ const User = ({ match }) => (
           isFollowing, followingCount, followersCount, following,
         },
       } = data;
-      const { currentUser: { _id } } = client.readQuery({ query: CURRENT_USER });
       const { id: userId } = match.params;
-      const isMe = userId === _id;
+      let isMe = false;
+      if (localStorage.getItem('token')) {
+        const { currentUser: { _id } } = client.readQuery({ query: CURRENT_USER });
+        isMe = userId === _id;
+      }
       return (
         <div className={styles.userPage}>
           <div className={styles.profileBanner}>
