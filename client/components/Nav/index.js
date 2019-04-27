@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import { Link, router } from 'umi';
+import { Query } from 'react-apollo';
+import { CURRENT_USER } from '../../graphql/user';
 import styles from './index.less';
 
 class Nav extends PureComponent {
@@ -27,7 +28,6 @@ class Nav extends PureComponent {
 
   render() {
     const { show } = this.state;
-    const { currentUser } = this.props;
     return (
       <div>
         <div className={styles.nav}>
@@ -39,37 +39,39 @@ class Nav extends PureComponent {
             <div className={styles.close} onClick={this.toggleMenuContainer}>关闭</div>
             <input className={styles.search} type="text" />
           </div>
-
-          {currentUser ? (
-            <div>
-              <div
-                className={styles.userPage}
-                onClick={() => this.gotoUserPage(currentUser._id)}
-              >
-                {currentUser.name}
-              </div>
-              <div
-                className={styles.logout}
-                onClick={this.logout}
-              >
-                退出豆瓣
-              </div>
-            </div>
-          )
-            : (
-              <div>
-                <div className={styles.login} onClick={this.gotoLogin}>登录豆瓣</div>
-              </div>
-            )
-          }
+          <Query query={CURRENT_USER}>
+            {({ loading, data }) => {
+              if (loading) { return 'Loading...'; }
+              const { currentUser } = data || {};
+              if (currentUser) {
+                return (
+                  <div>
+                    <div
+                      className={styles.userPage}
+                      onClick={() => this.gotoUserPage(currentUser._id)}
+                    >
+                      {currentUser.name}
+                    </div>
+                    <div
+                      className={styles.logout}
+                      onClick={this.logout}
+                    >
+                      退出豆瓣
+                    </div>
+                  </div>
+                );
+              }
+              return (
+                <div>
+                  <div className={styles.login} onClick={this.gotoLogin}>登录豆瓣</div>
+                </div>
+              );
+            }}
+          </Query>
         </div>
       </div>
     );
   }
 }
-
-Nav.propTypes = {
-  currentUser: PropTypes.any.isRequired,
-};
 
 export default Nav;
