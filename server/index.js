@@ -1,9 +1,9 @@
 const { ApolloServer } = require('apollo-server');
-const casual = require('casual');
 const mongoose = require('mongoose');
 const jsonwebtoken = require('jsonwebtoken');
 const typeDefs = require('./types');
 const resolvers = require('./resolvers');
+const mocks = require('./mocks');
 const { connectionStr, secret } = require('./config');
 
 mongoose.connect(connectionStr, { useNewUrlParser: true, useFindAndModify: false });
@@ -12,8 +12,8 @@ mongoose.connection.on('error', console.error);
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  mocks: { String: () => casual.word },
-  mockEntireSchema: false,
+  mocks,
+  mockEntireSchema: true,
   context: ({ req }) => {
     const getUser = () => {
       const { authorization } = req.headers;

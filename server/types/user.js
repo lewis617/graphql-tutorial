@@ -13,20 +13,12 @@ module.exports = gql`
     updateUser(user: UpdateUserInput!): User!
     deleteUser(user: DeleteUserInput!): User!
   }
-  "用户类型"
   type User {
-    "用户ID"
     _id: ID!
-    "用户名称"
     name: String!
-    "用户年龄"
-    age: Int
-    """
-    是否单身
-    
-    单身可撩 or 名花（草）有主
-    """
-    isSingle: Boolean
+    avatarUrl: String
+    location: String
+    intro: String
   }
   type Token {
     "JWT Token，放在 Header 中传进来"
