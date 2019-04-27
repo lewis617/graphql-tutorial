@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Query, Mutation } from 'react-apollo';
-import { Link } from 'umi';
+import { Link, router } from 'umi';
 import { USER, CURRENT_USER, FOLLOW } from '../../../graphql/user';
 import styles from './index.less';
 
@@ -49,7 +49,9 @@ const User = ({ match }) => (
                 {follow => (
                   <div
                     className={`${styles.followBtn} ${isFollowing ? styles.unfollow : styles.follow}`}
-                    onClick={() => follow({ variables: { id: userId } })}
+                    onClick={() => {
+                      if (localStorage.getItem('token')) { follow({ variables: { id: userId } }); } else { router.push('/login'); }
+                    }}
                   >
                     {isFollowing ? '已关注' : '关注'}
                   </div>
