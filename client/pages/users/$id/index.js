@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Query, Mutation } from 'react-apollo';
 import { Link, router } from 'umi';
-import { USER, CURRENT_USER, FOLLOW } from '../../../graphql/user';
+import { USER, FOLLOW } from '../../../graphql/user';
 import styles from './index.less';
 
 const User = ({ match }) => (
@@ -11,22 +11,17 @@ const User = ({ match }) => (
     variables={{ id: match.params.id }}
   >
     {({
-      loading, error, data, client,
+      loading, error, data,
     }) => {
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error :(</p>;
       const {
         user: {
-          avatarUrl, name, location, intro,
+          avatarUrl, name, location, intro, isMe,
           isFollowing, followingCount, followersCount, following,
         },
       } = data;
       const { id: userId } = match.params;
-      let isMe = false;
-      if (localStorage.getItem('token')) {
-        const { currentUser: { _id } } = client.readQuery({ query: CURRENT_USER });
-        isMe = userId === _id;
-      }
       return (
         <div className={styles.userPage}>
           <div className={styles.profileBanner}>

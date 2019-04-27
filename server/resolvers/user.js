@@ -24,11 +24,24 @@ module.exports = {
     },
     followers: parent => User.find({ following: parent._id }),
     isFollowing: async (parent, args, context) => {
+      let me;
+      try {
+        me = context.getUser();
+      } catch (err) { console.error(err); }
+      if (!me) { return false; }
       const user = await User.findOne({
-        _id: context.getUser()._id,
+        _id: me._id,
         following: parent._id,
       });
       return Boolean(user);
+    },
+    isMe: (parent, args, context) => {
+      let me;
+      try {
+        me = context.getUser();
+      } catch (err) { console.error(err); }
+      if (!me) { return false; }
+      return me._id === parent._id;
     },
   },
   Mutation: {

@@ -20,6 +20,7 @@ module.exports = gql`
     avatarUrl: String
     location: String
     intro: String
+    isMe: Boolean
     isFollowing: Boolean
     following(limit: Int skip: Int): [User]
     followers(limit: Int skip: Int): [User]
