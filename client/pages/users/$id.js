@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
+import { Link } from 'umi';
 import { USER, CURRENT_USER } from '../../graphql/user';
 import FollowBtn from '../../components/FollowBtn';
 import styles from './$id.less';
@@ -18,7 +19,7 @@ const User = ({ match }) => (
       const {
         user: {
           avatarUrl, name, location, intro,
-          isFollowing,
+          isFollowing, followingCount, followersCount, following,
         },
       } = data;
       const { currentUser: { _id } } = client.readQuery({ query: CURRENT_USER });
@@ -34,6 +35,25 @@ const User = ({ match }) => (
             <div className={styles.name}>{name}</div>
             <div className={styles.location}>{location}</div>
             <div className={styles.intro}>{intro}</div>
+          </div>
+          <div className={styles.profileFollow}>
+            <Link to={`${match.url}/following`}>
+              <div className={styles.info}>
+                <div className={styles.count}>{followingCount}</div>
+                <div className={styles.text}>TA关注的人</div>
+              </div>
+              <div className={styles.avatars}>
+                {following.map(item => (
+                  <img src={item.avatarUrl} alt={item.name} key={item.name} />
+                ))}
+              </div>
+            </Link>
+            <Link to={`${match.url}/followers`}>
+              <div className={styles.info}>
+                <div className={styles.count}>{followersCount}</div>
+                <div className={styles.text}>关注TA的人</div>
+              </div>
+            </Link>
           </div>
         </div>
       );

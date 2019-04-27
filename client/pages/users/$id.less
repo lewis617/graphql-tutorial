@@ -51,4 +51,45 @@
       color: #4a4a4a;
     }
   }
+
+  .profileFollow {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #fff;
+    margin-top: 15px;
+    padding: 22px 0;
+
+    >a {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      .info {
+        margin-right: 25px;
+        text-align: center;
+
+        .count {
+          font-size: 17px;
+          color: #4a4a4a;
+        }
+
+        .text {
+          font-size: 11px;
+          line-height: 1.27;
+          color: #9b9b9b;
+        }
+      }
+
+      .avatars {
+        >img {
+          width: 30px;
+          height: 30px;
+          border: solid 1px #fff;
+          border-radius: 50%;
+          margin-left: -10px;
+        }
+      }
+    }
+  }
 }

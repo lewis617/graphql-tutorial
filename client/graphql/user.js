@@ -16,6 +16,12 @@ export const USER = gql`
       location
       intro
       isFollowing
+      following(limit: 5){
+        name
+        avatarUrl
+      }
+      followingCount
+      followersCount
     }
   }
 `;
