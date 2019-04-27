@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Query } from 'react-apollo';
+import { Query, Mutation } from 'react-apollo';
 import { Link } from 'umi';
-import { USER, CURRENT_USER } from '../../graphql/user';
-import FollowBtn from '../../components/FollowBtn';
+import { USER, CURRENT_USER, FOLLOW } from '../../graphql/user';
 import styles from './$id.less';
 
 const User = ({ match }) => (
@@ -23,7 +22,8 @@ const User = ({ match }) => (
         },
       } = data;
       const { currentUser: { _id } } = client.readQuery({ query: CURRENT_USER });
-      const isMe = match.params.id === _id;
+      const { id: userId } = match.params;
+      const isMe = userId === _id;
       return (
         <div className={styles.userPage}>
           <div className={styles.profileBanner}>
@@ -31,7 +31,28 @@ const User = ({ match }) => (
             <img src={avatarUrl} alt={name} className={styles.avatar} />
           </div>
           <div className={styles.userInfo}>
-            {isMe || <FollowBtn isFollowing={isFollowing} id={match.params.id} />}
+            {isMe || (
+              <Mutation
+                mutation={FOLLOW}
+                update={(cache) => {
+                  const { user } = cache.readQuery({ query: USER, variables: { id: userId } });
+                  cache.writeQuery({
+                    query: USER,
+                    variables: { id: userId },
+                    data: { user: { ...user, isFollowing: !isFollowing } },
+                  });
+                }}
+              >
+                {follow => (
+                  <div
+                    className={`${styles.followBtn} ${isFollowing ? styles.unfollow : styles.follow}`}
+                    onClick={() => follow({ variables: { id: userId } })}
+                  >
+                    {isFollowing ? '已关注' : '关注'}
+                  </div>
+                )}
+              </Mutation>
+            )}
             <div className={styles.name}>{name}</div>
             <div className={styles.location}>{location}</div>
             <div className={styles.intro}>{intro}</div>
