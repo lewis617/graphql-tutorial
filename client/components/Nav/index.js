@@ -1,14 +1,8 @@
 import React, { PureComponent } from 'react';
 import { Link, router } from 'umi';
 import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
+import { CURRENT_USER } from '../../graphql/user';
 import styles from './index.less';
-
-const CURRENT_USER = gql`
-{
-  currentUser{name _id}
-}
-`;
 
 class Nav extends PureComponent {
   state = {

@@ -8,7 +8,7 @@ import { ApolloProvider } from 'react-apollo';
 import { onError } from 'apollo-link-error';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Nav from './Nav';
+import Nav from '../components/Nav';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:4000/',

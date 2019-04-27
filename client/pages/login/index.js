@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
 import { router } from 'umi';
 import { ApolloConsumer } from 'react-apollo';
-import gql from 'graphql-tag';
 import { toast } from 'react-toastify';
+import { LOGIN } from '../../graphql/user';
 import styles from './index.less';
 
-const LOGIN = gql`
-query($user: LoginInput!){
-  login(user: $user){
-    token
-  }
-}
-`;
 class Login extends Component {
   state = {}
 
