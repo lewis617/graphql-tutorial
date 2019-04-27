@@ -18,11 +18,22 @@ module.exports = {
     currentUser: (parent, args, context) => User.findById(context.getUser()._id),
   },
   User: {
-    following: async (parent) => {
-      const user = await User.findById(parent._id).select('+following').populate('following');
+    following: async (parent, args) => {
+      const user = await User.findById(parent._id)
+        .select('+following')
+        .populate({
+          path: 'following',
+          options: {
+            limit: args.limit || 10,
+            skip: args.skip || 0,
+          },
+        });
       return user && user.following;
     },
-    followers: parent => User.find({ following: parent._id }),
+    followers: (parent, args) => User
+      .find({ following: parent._id })
+      .limit(args.limit || 10)
+      .skip(args.skip || 0),
     isFollowing: async (parent, args, context) => {
       let me;
       try {

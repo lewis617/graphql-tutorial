@@ -7,7 +7,7 @@ import { USER_FOLLOWERS } from '../../../graphql/user';
 const Followers = ({ match }) => (
   <Query
     query={USER_FOLLOWERS}
-    variables={{ id: match.params.id, limit: 10, skip: 0 }}
+    variables={{ id: match.params.id, limit: 5, skip: 0 }}
   >
     {({
       loading, error, data, fetchMore,
@@ -21,7 +21,7 @@ const Followers = ({ match }) => (
           fetchMore={() => {
             fetchMore({
               variables: {
-                offset: data.user.followers,
+                skip: data.user.followers.length,
               },
               updateQuery: (prev, { fetchMoreResult }) => {
                 if (!fetchMoreResult) return prev;
