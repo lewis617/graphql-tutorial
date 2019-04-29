@@ -1,5 +1,4 @@
+const { merge } = require('lodash');
 const user = require('./user');
 
-module.exports = {
-  ...user,
-};
+module.exports = merge(user);
