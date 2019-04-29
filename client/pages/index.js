@@ -4,6 +4,8 @@ import { BOOKS } from '../graphql/book';
 import Books from '../components/Books';
 import styles from './index.less';
 
+const tags = ['小说', '爱情', '历史', '外国文学', '青春', '励志', '随笔', '传记', '推理', '旅行', '奇幻', '经管'];
+
 export default function () {
   return (
     <Query query={BOOKS} variables={{ limit: 5 }}>
@@ -14,6 +16,10 @@ export default function () {
           <div className={styles.page}>
             <div className={styles.header}>最新图书</div>
             <Books books={data.books} />
+            <div className={styles.header}>分类浏览</div>
+            <div className={styles.tags}>
+              {tags.map(tag => <div className={styles.tag} key={tag}>{tag}</div>)}
+            </div>
           </div>
         );
       }}

@@ -1,8 +1,42 @@
 .page {
-  padding: 10px 0 0 18px;
+  padding-left: 18px;
 
   .header {
     color: #111;
     font-size: 17px;
+    margin: 10px 0;
+  }
+
+  .tags {
+    .tag {
+      width: 41.5%;
+      border-top: solid 1px #eee;
+      border-right: solid 1px #eee;
+      float: left;
+      padding-right: 1.12rem;
+      height: 2.64rem;
+      line-height: 2.64rem;
+      color: #42bd56;
+      font-size: .9rem;
+
+      &:nth-child(even) {
+        border-right: none;
+        padding-left: 1.12rem;
+      }
+
+      &:after {
+        display: block;
+        content: '';
+        color: #ccc;
+        float: right;
+        font-weight: bold;
+        border-right: solid 1px #ccc;
+        border-bottom: solid 1px #ccc;
+        width: .5rem;
+        height: .5rem;
+        transform: rotate(-45deg);
+        margin-top: 1rem;
+      }
+    }
   }
 }
