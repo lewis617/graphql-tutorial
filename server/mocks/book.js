@@ -2,7 +2,7 @@ const casual = require('casual');
 
 module.exports = {
   Book: () => {
-    const title = casual.word;
+    const title = casual.words(3);
     return {
       title: () => title,
       coverUrl: () => `//iph.href.lu/150x180?text=${title}&bg=${casual.rgb_hex.replace('#', '')}`,

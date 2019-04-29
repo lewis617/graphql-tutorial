@@ -1,7 +1,5 @@
 import gql from 'graphql-tag';
 
-export const HELLO = gql`{hello}`;
-
 export const FOLLOW = gql`
   mutation($id: ID!) {
     follow(user: {_id: $id}){isFollowing}
