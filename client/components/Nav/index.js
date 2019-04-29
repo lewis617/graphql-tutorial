@@ -11,6 +11,14 @@ class Nav extends PureComponent {
 
   toggleMenuContainer = () => this.setState(prev => ({ show: !prev.show }))
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { value } = this.input;
+    this.toggleMenuContainer();
+    router.push(`/books/?q=${value}`);
+    this.input.value = '';
+  }
+
   gotoLogin = () => {
     this.toggleMenuContainer();
     router.push('/login');
@@ -37,7 +45,9 @@ class Nav extends PureComponent {
         <div className={styles.menuContainer} style={{ display: show ? 'block' : 'none' }}>
           <div>
             <div className={styles.close} onClick={this.toggleMenuContainer}>关闭</div>
-            <input className={styles.search} type="text" />
+            <form onSubmit={this.handleSubmit}>
+              <input className={styles.search} type="text" ref={(el) => { this.input = el; }} />
+            </form>
           </div>
           <Query query={CURRENT_USER}>
             {({ loading, data }) => {
