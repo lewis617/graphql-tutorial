@@ -1,5 +1,6 @@
 import React from 'react';
 import { Query } from 'react-apollo';
+import { Link } from 'umi';
 import { BOOKS } from '../graphql/book';
 import Books from '../components/Books';
 import styles from './index.less';
@@ -18,7 +19,7 @@ export default function () {
             <Books books={data.books} />
             <div className={styles.header}>分类浏览</div>
             <div className={styles.tags}>
-              {tags.map(tag => <div className={styles.tag} key={tag}>{tag}</div>)}
+              {tags.map(tag => <Link to={`/books?tag=${tag}`} key={tag}><div className={styles.tag}>{tag}</div></Link>)}
             </div>
           </div>
         );

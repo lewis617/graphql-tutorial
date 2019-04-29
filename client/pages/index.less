@@ -8,6 +8,11 @@
   }
 
   .tags {
+    a:nth-child(even)>.tag {
+      border-right: none;
+      padding-left: 1.12rem;
+    }
+
     .tag {
       width: 41.5%;
       border-top: solid 1px #eee;
@@ -18,11 +23,6 @@
       line-height: 2.64rem;
       color: #42bd56;
       font-size: .9rem;
-
-      &:nth-child(even) {
-        border-right: none;
-        padding-left: 1.12rem;
-      }
 
       &:after {
         display: block;
