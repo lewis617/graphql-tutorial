@@ -5,10 +5,24 @@ export const BOOKS = gql`
     books(limit: $limit, skip: $skip, q: $q, tag: $tag){
       total
       list {
+        _id
         title
         coverUrl
         rating
       }
+    }
+  }
+`;
+
+export const BOOK = gql`
+  query($id: ID!){
+    book(_id: $id){
+      title
+      coverUrl
+      price
+      author
+      rating
+      tags
     }
   }
 `;
