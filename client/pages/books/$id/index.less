@@ -12,14 +12,17 @@
 
   .body {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 
-    .info {
-      color: #494949;
-      margin-top: 15px;
-      padding-right: 24px;
-      font-size: 14px;
-      line-height: 1.6;
+    >.left {
+      flex: 1;
+      .info {
+        color: #494949;
+        margin-top: 15px;
+        padding-right: 24px;
+        font-size: 14px;
+        line-height: 1.6;
+      }
     }
 
     >img {
