@@ -6,6 +6,7 @@ module.exports = {
       .find({ title: new RegExp(args.q), tags: { $in: args.tag || /^/ } })
       .limit(args.limit || 10)
       .skip(args.skip || 0),
+    book: (parent, args) => Book.findById(args._id),
   },
   Book: {
   },

@@ -1,0 +1,368 @@
+{
+  "books": [
+    {
+      "title": "十日谈",
+      "author": "乔万尼.薄伽丘著；陈世丹译，创美汇品出品",
+      "price": "27.2",
+      "coverUrl": "http://img3m3.ddimg.cn/93/22/25213413-1_l_2.jpg",
+      "tags": ["外国文学"]
+    },
+    {
+      "title": "我的梦幻被子",
+      "author": "[日]铃木典丈/著彭懿/译",
+      "price": "20.1",
+      "coverUrl": "http://img3m6.ddimg.cn/23/35/27853376-1_l_2.jpg",
+      "tags": ["历史"]
+    },
+    {
+      "title": "棋王树王孩子王",
+      "author": "阿城",
+      "price": "28.5",
+      "coverUrl": "http://img3m6.ddimg.cn/53/0/23823116-1_l_1.jpg",
+      "tags": ["青春"]
+    },
+    {
+      "title": "告白倒计时",
+      "author": "蒙淇淇著,悦读纪出品",
+      "price": "25.87",
+      "coverUrl": "http://img3m8.ddimg.cn/24/23/27864168-1_l_9.jpg",
+      "tags": ["爱情"]
+    },
+    {
+      "title": "丰乳肥臀",
+      "author": "莫言",
+      "price": "27",
+      "coverUrl": "http://img3m5.ddimg.cn/83/13/24169745-1_l_5.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "杨天乐买房记",
+      "author": "杨时旸著，新经典出品",
+      "price": "19.5",
+      "coverUrl": "http://img3m9.ddimg.cn/66/15/25479399-1_l_2.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "角儿",
+      "author": "严歌苓",
+      "price": "24.3",
+      "coverUrl": "http://img3m5.ddimg.cn/45/1/25100505-1_l_2.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "人生海海",
+      "author": "麦家著，新经典出品",
+      "price": "37.9",
+      "coverUrl": "http://img3m5.ddimg.cn/51/34/26921715-1_l_2.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "坏血：一个硅谷巨头的秘密与谎言",
+      "author": "(美)约翰·卡雷鲁",
+      "price": "24.9",
+      "coverUrl": "http://img3m1.ddimg.cn/82/17/27848881-1_l_3.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "遍地风流",
+      "author": "阿城",
+      "price": "26",
+      "coverUrl": "http://img3m9.ddimg.cn/35/9/23919029-1_l_4.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "山月记",
+      "author": "（日）中岛敦，译者徐建雄，绘者撒旦君，果麦文化出品",
+      "price": "22.5",
+      "coverUrl": "http://img3m1.ddimg.cn/53/9/26514431-1_l_5.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "文学课",
+      "author": "沈从文著,紫云文心出品",
+      "price": "22.5",
+      "coverUrl": "http://img3m3.ddimg.cn/23/21/26915153-1_l_3.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "局外人",
+      "author": "[法]阿尔贝·加缪著柳鸣九译",
+      "price": "17.3",
+      "coverUrl": "http://img3m4.ddimg.cn/69/25/23323974-1_l_1.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "胭脂与焉支——郑张尚芳博客选",
+      "author": "郑张尚芳",
+      "price": "32.5",
+      "coverUrl": "http://img3m2.ddimg.cn/43/34/27850822-1_l_3.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "秋水堂论金瓶梅",
+      "author": "田晓菲著，理想国出品",
+      "price": "62.3",
+      "coverUrl": "http://img3m8.ddimg.cn/75/16/26912928-1_l_3.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "闲话闲说",
+      "author": "阿城",
+      "price": "18",
+      "coverUrl": "http://img3m9.ddimg.cn/45/19/23919039-1_l_4.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "丰子恺万般滋味，都是生活",
+      "author": "丰子恺",
+      "price": "21",
+      "coverUrl": "http://img3m5.ddimg.cn/31/23/25308985-1_l_8.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "解密",
+      "author": "麦家著，新经典出品",
+      "price": "17.5",
+      "coverUrl": "http://img3m5.ddimg.cn/18/21/23451435-1_l_19.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "她比烟花更寂寞",
+      "author": "希拉里·杜普蕾皮尔斯·杜普蕾著，文通天下出品",
+      "price": "29",
+      "coverUrl": "http://img3m9.ddimg.cn/58/5/26445829-1_l_4.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "拯救温斯洛",
+      "author": "莎朗·克里奇，白马时光出品",
+      "price": "16.7",
+      "coverUrl": "http://img3m6.ddimg.cn/68/35/26924306-1_l_7.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "原乡",
+      "author": "杨素筠、九志天达出品",
+      "price": "19",
+      "coverUrl": "http://img3m8.ddimg.cn/78/19/26909268-1_l_2.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "入圣之机",
+      "author": "陈立胜",
+      "price": "44",
+      "coverUrl": "http://img3m5.ddimg.cn/34/26/26917045-1_l_3.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "意林合订本2019年01期-06期（总第60卷）",
+      "author": "意林杂志社",
+      "price": "17.8",
+      "coverUrl": "http://img3m8.ddimg.cn/35/27/26492138-1_l_6.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "ABC谋杀案",
+      "author": "阿加莎·克里斯蒂著;赵文伟译;",
+      "price": "21",
+      "coverUrl": "http://img3m9.ddimg.cn/3/20/26924439-1_l_3.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "结婚没有意思的故事",
+      "author": "阿城等",
+      "price": "49.5",
+      "coverUrl": "http://img3m5.ddimg.cn/93/36/25173615-1_l_3.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "蒋介石在大陆的最后日子",
+      "author": "田闻一",
+      "price": "52.3",
+      "coverUrl": "http://img3m4.ddimg.cn/40/22/26917744-1_l_3.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "这世界如露水般短暂",
+      "author": "(日)小林一茶",
+      "price": "24",
+      "coverUrl": "http://img3m0.ddimg.cn/4/9/26913550-1_l_2.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "战马",
+      "author": "〔英〕迈克尔·莫波格　著，李晋　译，爱心树童书出品",
+      "price": "26.3",
+      "coverUrl": "http://img3m7.ddimg.cn/22/9/23812987-1_l_1.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "她被给予的人生",
+      "author": "（美）爱伦·玛丽·怀斯曼著，儒意欣欣出品",
+      "price": "24",
+      "coverUrl": "http://img3m8.ddimg.cn/18/0/26925048-1_l_13.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "理想国译丛·拉丁美洲被切开的血管（NO：033）",
+      "author": "爱德华多·加莱亚诺著，王玫等译，理想国出品",
+      "price": "56.9",
+      "coverUrl": "http://img3m7.ddimg.cn/96/26/26195397-1_l_2.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "和孩子聊艺术",
+      "author": "西班牙拉鲁斯出版社编著；(西)胡迪特·弗里戈拉,(西)萨乌尔·M.伊里加赖绘;贾佳译",
+      "price": "34.5",
+      "coverUrl": "http://img3m1.ddimg.cn/47/30/26921711-1_l_3.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "王朔文集",
+      "author": "王朔著",
+      "price": "249",
+      "coverUrl": "http://img3m8.ddimg.cn/67/13/23987668-1_l_12.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "妻妾成群",
+      "author": "苏童",
+      "price": "34.5",
+      "coverUrl": "http://img3m9.ddimg.cn/58/31/26512159-1_l_3.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "摆渡人3无境之爱",
+      "author": "克莱儿·麦克福尔，白马时光出品",
+      "price": "31.7",
+      "coverUrl": "http://img3m5.ddimg.cn/3/20/27847515-1_l_6.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "北野武的小酒馆",
+      "author": "北野武著姜向明译",
+      "price": "26.9",
+      "coverUrl": "http://img3m8.ddimg.cn/23/27/25198988-1_l_3.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "布隆夫曼脱单历险记",
+      "author": "[美]丹尼尔·华莱士著宁蒙译时代华语出品",
+      "price": "42",
+      "coverUrl": "http://img3m9.ddimg.cn/37/4/26916949-1_l_6.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "千江有水千江月：珍藏版（精装）",
+      "author": "萧丽红著",
+      "price": "33.7",
+      "coverUrl": "http://img3m0.ddimg.cn/3/22/25273020-1_l_3.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "手术（新世纪作家文丛第四辑)",
+      "author": "盛可以",
+      "price": "22.5",
+      "coverUrl": "http://img3m5.ddimg.cn/51/14/26915775-1_l_9.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "我念你如初",
+      "author": "顾西爵，白马时光出品",
+      "price": "27.4",
+      "coverUrl": "http://img3m2.ddimg.cn/84/23/26923332-1_l_6.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "黄金降落伞",
+      "author": "丽芙·康斯坦丁，白马时光出品",
+      "price": "35.5",
+      "coverUrl": "http://img3m9.ddimg.cn/7/21/26919889-1_l_3.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "法华经佛教十三经",
+      "author": "王彬译注",
+      "price": "24.7",
+      "coverUrl": "http://img3m3.ddimg.cn/74/33/20837693-1_l_2.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "许倬云问学记",
+      "author": "许倬云著，理想国出品",
+      "price": "30",
+      "coverUrl": "http://img3m6.ddimg.cn/66/36/26914206-1_l_3.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "一个人生活",
+      "author": "谷川俊太郎著,博集天卷出品",
+      "price": "22.5",
+      "coverUrl": "http://img3m4.ddimg.cn/84/9/26919174-1_l_2.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "笑场",
+      "author": "李诞著，博集天卷出品",
+      "price": "18",
+      "coverUrl": "http://img3m9.ddimg.cn/90/26/25142229-1_l_13.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "冷场",
+      "author": "李诞韩寒监制，果麦文化出品",
+      "price": "22.5",
+      "coverUrl": "http://img3m3.ddimg.cn/94/29/26456953-1_l_1.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "白鹿原",
+      "author": "陈忠实",
+      "price": "31.4",
+      "coverUrl": "http://img3m2.ddimg.cn/90/10/26914032-1_l_2.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "玉森画廊的客人",
+      "author": "郑辰著，理想国出品",
+      "price": "33.7",
+      "coverUrl": "http://img3m9.ddimg.cn/26/3/26908919-1_l_2.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "中国人的生存规矩",
+      "author": "吴晗著，紫云文心出品",
+      "price": "22.5",
+      "coverUrl": "http://img3m7.ddimg.cn/45/4/26921907-1_l_3.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "六里庄遗事",
+      "author": "东东枪著，理想国出品",
+      "price": "53.8",
+      "coverUrl": "http://img3m4.ddimg.cn/25/2/26513314-1_l_2.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "常识与通识",
+      "author": "阿城著，理想国出品",
+      "price": "36",
+      "coverUrl": "http://img3m8.ddimg.cn/91/9/26924428-1_l_3.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "闲话闲说：中国世俗与中国小说（增订版）",
+      "author": "阿城著，理想国出品",
+      "price": "37.9",
+      "coverUrl": "http://img3m0.ddimg.cn/93/11/26924430-1_l_5.jpg",
+      "tags": ["小说"]
+    },
+    {
+      "title": "绘本花园：等爸爸回家（精）",
+      "author": "乔安妮·施瓦兹　著，西德尼·史密斯　绘",
+      "price": "27.5",
+      "coverUrl": "http://img3m6.ddimg.cn/44/3/26921906-1_l_8.jpg",
+      "tags": ["小说"]
+    }
+  ]
+}
