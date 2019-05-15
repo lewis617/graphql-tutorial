@@ -2,7 +2,7 @@ const { gql } = require('apollo-server');
 
 module.exports = gql`
   extend type Query {
-    books(limit: Int skip: Int q: String tag: String): [Book]!
+    books(limit: Int skip: Int q: String tag: String): Books!
     book(_id: ID!): Book
   }
   extend type Mutation {
@@ -17,6 +17,10 @@ module.exports = gql`
     tags: [String]!
     author: String!
     price: String!
+  }
+  type Books {
+    total: Int!
+    list: [Book]!
   }
   input BookInput{
     title: String!

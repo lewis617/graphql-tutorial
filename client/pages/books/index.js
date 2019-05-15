@@ -23,12 +23,37 @@ const BooksPage = ({ location }) => {
           </span>
         )}
       </div>
-      <Query query={BOOKS} variables={{ limit: 5, q, tag }}>
-        {({ loading, error, data }) => {
+      <Query
+        query={BOOKS}
+        variables={{
+          limit: 5, skip: 0, q, tag,
+        }}
+      >
+        {({
+          loading, error, data, fetchMore,
+        }) => {
           if (loading) return <p>Loading...</p>;
           if (error) return <p>Error :(</p>;
           return (
-            <Books books={data.books} />
+            <Books
+              books={data.books}
+              fetchMore={() => {
+                fetchMore({
+                  variables: {
+                    skip: data.books.list.length,
+                  },
+                  updateQuery: (prev, { fetchMoreResult }) => {
+                    if (!fetchMoreResult) { return prev; }
+                    return {
+                      books: {
+                        ...prev.books,
+                        list: prev.books.list.concat(fetchMoreResult.books.list),
+                      },
+                    };
+                  },
+                });
+              }}
+            />
           );
         }}
       </Query>

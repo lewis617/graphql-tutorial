@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import Rating from '../Rating';
 import styles from './index.less';
 
-const Books = ({ books }) => (
+const Books = ({ books, fetchMore }) => (
   <div className={styles.books}>
-    {books.map(item => (
+    {books.list.map(item => (
       <div className={styles.book} key={item.title}>
         <img src={item.coverUrl} alt={item.title} />
         <div className={styles.info}>
@@ -14,11 +14,15 @@ const Books = ({ books }) => (
         </div>
       </div>
     ))}
+    {fetchMore
+      && (books.total > books.list.length)
+      && <div className={styles.fetchMore} onClick={fetchMore}>显示更多</div>}
   </div>
 );
 
 Books.propTypes = {
   books: PropTypes.array.isRequired,
+  fetchMore: PropTypes.func.isRequired,
 };
 
 export default Books;
