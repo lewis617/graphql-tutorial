@@ -18,7 +18,12 @@ const BookPage = ({ match }) => (
       return (
         <div className={styles.page}>
           <BookInfo {...book} />
-          <MyComment {...book.myComment} title={book.title} refetch={refetch} />
+          <MyComment
+            {...book.myComment}
+            bookId={match.params.id}
+            title={book.title}
+            refetch={refetch}
+          />
           <BookTags {...book} />
         </div>
       );

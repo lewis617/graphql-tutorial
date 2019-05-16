@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const { Schema, model } = mongoose;
-const userSchema = new Schema({
+const bookSchema = new Schema({
   title: { type: String, required: true },
   coverUrl: { type: String, required: true },
   author: { type: String, required: true },
@@ -10,4 +10,4 @@ const userSchema = new Schema({
   tags: { type: [String] },
 });
 
-module.exports = model('Book', userSchema);
+module.exports = model('Book', bookSchema);

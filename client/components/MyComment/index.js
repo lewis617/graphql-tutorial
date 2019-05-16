@@ -16,7 +16,7 @@ class MyComment extends Component {
 
   render() {
     const {
-      stage, rating, comment, _id, refetch,
+      stage, rating, comment, _id, bookId, refetch,
     } = this.props;
     const { visible } = this.state;
     return (
@@ -26,15 +26,13 @@ class MyComment extends Component {
           <CommentBtn disabled={stage === 'reading'} onClick={() => this.setVisible('reading')}>在读</CommentBtn>
           <CommentBtn disabled={stage === 'done'} onClick={() => this.setVisible('done')}>读过</CommentBtn>
         </div>
-        {
-          stage && (
-            <div className={styles.subTitle}>
-              我
-                {({ want: '想读', reading: '在读', done: '读过' })[stage]}
-              这本书
-            </div>
-          )
-        }
+        {stage && (
+          <div className={styles.subTitle}>
+            我
+            {({ want: '想读', reading: '在读', done: '读过' })[stage]}
+            这本书
+          </div>
+        )}
         {
           (stage === 'reading' || stage === 'done')
           && (<Rating rating={rating} />)
@@ -65,7 +63,13 @@ class MyComment extends Component {
                 stage={visible}
                 onCancel={() => this.setVisible(false)}
                 onOk={(formData) => {
-                  action({ variables: { comment: { ...formData, stage: visible, _id } } });
+                  action({
+                    variables: {
+                      comment: {
+                        ...formData, stage: visible, _id, bookId,
+                      },
+                    },
+                  });
                 }}
               />
             )}
@@ -88,6 +92,7 @@ MyComment.propTypes = {
   comment: PropTypes.string,
   _id: PropTypes.string,
   refetch: PropTypes.func.isRequired,
+  bookId: PropTypes.string.isRequired,
 };
 
 export default MyComment;

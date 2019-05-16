@@ -1,5 +1,6 @@
 const { merge } = require('lodash');
 const user = require('./user');
 const book = require('./book');
+const comment = require('./comment');
 
-module.exports = merge(user, book);
+module.exports = merge(comment, user, book);

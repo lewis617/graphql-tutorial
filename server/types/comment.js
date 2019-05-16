@@ -10,6 +10,7 @@ module.exports = gql`
     rating: Float
     comment: String
     stage: Stage!
+    bookId: ID!
   }
   input DeleteCommentInput{
     _id: ID!
@@ -18,7 +19,8 @@ module.exports = gql`
     _id: ID
     rating: Int
     comment: String
-    stage: Stage!
+    stage: Stage
+    bookId: ID!
   }
   enum Stage{
     want
