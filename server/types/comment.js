@@ -26,6 +26,7 @@ module.exports = gql`
     stage: Stage
     bookId: ID!
     commentator: User
+    updatedAt: String
   }
   enum Stage{
     want

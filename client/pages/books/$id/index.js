@@ -4,6 +4,7 @@ import { Query } from 'react-apollo';
 import { BOOK } from '../../../graphql/book';
 import BookInfo from '../../../components/BookInfo';
 import BookTags from '../../../components/BookTags';
+import BookComments from '../../../components/BookComments';
 import MyComment from '../../../components/MyComment';
 import styles from './index.less';
 
@@ -25,6 +26,7 @@ const BookPage = ({ match }) => (
             refetch={refetch}
           />
           <BookTags {...book} />
+          <BookComments {...book.comments} title={book.title} />
         </div>
       );
     }}

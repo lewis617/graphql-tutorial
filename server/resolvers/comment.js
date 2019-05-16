@@ -11,18 +11,18 @@ module.exports = {
         stage: null, rating: null, content: null, bookId: null, _id: null,
       };
       if (!me) { return defaultComment; }
-      const comment = await Comment.findOne({ bookId: _id, userId: me._id });
+      const comment = await Comment.findOne({ bookId: _id, commentator: me._id });
       return comment || defaultComment;
     },
   },
   Mutation: {
     updateComment: (parent, args, context) => {
       const { comment: { _id, ...rest } } = args;
-      const userId = context.getUser()._id;
+      const commentator = context.getUser()._id;
       if (_id) {
         return Comment.findByIdAndUpdate(_id, rest, { new: true });
       }
-      return Comment.create({ ...rest, userId });
+      return Comment.create({ ...rest, commentator });
     },
     deleteComment: (parent, args) => Comment.findByIdAndDelete(args.comment._id),
   },

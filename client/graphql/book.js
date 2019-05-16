@@ -29,6 +29,18 @@ export const BOOK = gql`
         content
         stage
       }
+      comments {
+        total
+        list{
+          rating
+          content
+          updatedAt
+          commentator{
+            name
+            avatarUrl
+          }
+        }
+      }
     }
   }
 `;
