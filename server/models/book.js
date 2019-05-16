@@ -7,6 +7,7 @@ const bookSchema = new Schema({
   author: { type: String, required: true },
   price: { type: String, required: true },
   rating: { type: Number, required: true, default: 0 },
+  ratingNumbers: { type: Number, required: true, default: 0 },
   tags: { type: [String] },
 });
 
