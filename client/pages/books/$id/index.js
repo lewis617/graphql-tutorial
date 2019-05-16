@@ -15,7 +15,7 @@ const BookPage = ({ match }) => (
       const { book } = data;
       return (
         <div className={styles.page}>
-          <h1 className={styles.title}>{book.title}</h1>
+          <div className={styles.title}>{book.title}</div>
           <div className={styles.body}>
             <div className={styles.left}>
               <Rating rating={book.rating} size="medium" />
@@ -24,6 +24,10 @@ const BookPage = ({ match }) => (
               </div>
             </div>
             <img src={book.coverUrl} alt={book.title} />
+          </div>
+          <div className={styles.subTitle}>所属标签</div>
+          <div className={styles.tags}>
+            {book.tags.map(t => <div className={styles.tag} key={t}>{t}</div>)}
           </div>
         </div>
       );
