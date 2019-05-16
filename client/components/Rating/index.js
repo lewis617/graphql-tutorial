@@ -18,9 +18,13 @@ const Rating = ({ rating, size }) => {
   );
 };
 
+Rating.defaultProps = {
+  size: 'small',
+};
+
 Rating.propTypes = {
   rating: PropTypes.number.isRequired,
-  size: PropTypes.string.isRequired,
+  size: PropTypes.string,
 };
 
 export default Rating;

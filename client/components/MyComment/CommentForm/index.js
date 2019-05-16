@@ -25,7 +25,10 @@ class CommentForm extends Component {
         <div className={styles.ratingContainer}>
           <RatingRadio value={rating} onChange={v => this.setState({ rating: v })} />
         </div>
-        <div>{comment}</div>
+        <div className={styles.commentContainer}>
+          <div className={styles.subTitle}>写短评</div>
+          <textarea value={comment} onChange={e => this.setState({ comment: e.target.value })} />
+        </div>
       </div>
     );
   }

@@ -58,7 +58,7 @@ MyComment.defaultProps = {
 };
 
 MyComment.propTypes = {
-  stage: PropTypes.number.isRequired,
+  stage: PropTypes.string.isRequired,
   rating: PropTypes.number,
   comment: PropTypes.string,
 };
