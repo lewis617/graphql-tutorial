@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './index.less';
 
 const CommentBtn = ({ children, disabled, onClick }) => (
-  <div className={`${styles.btn} ${styles[disabled ? 'disabled' : 'abled']}`} onClick={disabled || onClick}>
+  <div className={`${styles.btn} ${styles[disabled ? 'disabled' : 'abled']}`} onClick={disabled ? undefined : onClick}>
     {children}
   </div>
 );

@@ -24,10 +24,14 @@ const Comments = ({ total, list, fetchMore }) => (
   </div>
 );
 
+Comments.defaultProps = {
+  fetchMore: undefined,
+};
+
 Comments.propTypes = {
   total: PropTypes.number.isRequired,
   list: PropTypes.array.isRequired,
-  fetchMore: PropTypes.func.isRequired,
+  fetchMore: PropTypes.func,
 };
 
 export default Comments;

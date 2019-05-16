@@ -6,7 +6,7 @@ import styles from './index.less';
 
 const BookComments = (props) => {
   const {
-    title, total, list, bookId,
+    title, total, bookId,
   } = props;
   return (
     <div>
@@ -16,8 +16,8 @@ const BookComments = (props) => {
         {total}
         ）
       </div>
-      <Comments list={list} />
-      <Link to={`/books/${bookId}/comments`} className={styles.gotoComments}>查看全部</Link>
+      <Comments {...props} />
+      {total > 5 && <Link to={`/books/${bookId}/comments`} className={styles.gotoComments}>查看全部</Link>}
     </div>
   );
 };

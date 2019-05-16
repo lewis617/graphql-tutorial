@@ -18,8 +18,12 @@ const RatingRadio = ({ value, onChange }) => {
   );
 };
 
+RatingRadio.defaultProps = {
+  value: 0,
+};
+
 RatingRadio.propTypes = {
-  value: PropTypes.number.isRequired,
+  value: PropTypes.number,
   onChange: PropTypes.func.isRequired,
 };
 

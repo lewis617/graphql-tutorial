@@ -14,6 +14,19 @@ module.exports = {
       const comment = await Comment.findOne({ bookId: _id, commentator: me._id });
       return comment || defaultComment;
     },
+    comments: (parent, args) => ({ ...parent, ...args }),
+  },
+  Comments: {
+    total: args => Comment.count({ bookId: args._id }),
+    list: args => Comment
+      .find({ bookId: args._id })
+      .limit(args.limit || 10)
+      .skip(args.skip || 0)
+      .populate('commentator'),
+  },
+  Comment: {
+    updatedAt: parent => parent.updatedAt.toLocaleString(),
+    commentator: parent => parent.commentator,
   },
   Mutation: {
     updateComment: (parent, args, context) => {

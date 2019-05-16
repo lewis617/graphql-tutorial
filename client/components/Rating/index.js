@@ -13,17 +13,18 @@ const Rating = ({ rating, size }) => {
       <img src={getStar(3)} alt="star" />
       <img src={getStar(4)} alt="star" />
       <img src={getStar(5)} alt="star" />
-      <span>{rating.toFixed(1)}</span>
+      <span>{(rating || 0).toFixed(1)}</span>
     </div>
   );
 };
 
 Rating.defaultProps = {
+  rating: 0,
   size: 'small',
 };
 
 Rating.propTypes = {
-  rating: PropTypes.number.isRequired,
+  rating: PropTypes.number,
   size: PropTypes.string,
 };
 
