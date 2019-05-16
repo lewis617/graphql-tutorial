@@ -4,7 +4,9 @@ module.exports = {
   Book: {
     myComment: async ({ _id }) => {
       const comment = await Comment.findOne({ bookId: _id });
-      return comment || {};
+      return comment || {
+        stage: null, rating: null, comment: null, bookId: null, _id: null,
+      };
     },
   },
   Mutation: {

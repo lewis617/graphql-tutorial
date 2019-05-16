@@ -12,8 +12,8 @@ mongoose.connection.on('error', console.error);
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  // mocks,
-  // mockEntireSchema: false,
+  mocks,
+  mockEntireSchema: false,
   context: ({ req }) => {
     const getUser = () => {
       const { authorization } = req.headers;
