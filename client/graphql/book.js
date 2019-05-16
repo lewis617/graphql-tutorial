@@ -23,6 +23,11 @@ export const BOOK = gql`
       author
       rating
       tags
+      myComment{
+        rating
+        comment
+        stage
+      }
     }
   }
 `;
