@@ -24,6 +24,7 @@ export const BOOK = gql`
       rating
       tags
       myComment{
+        _id
         rating
         comment
         stage

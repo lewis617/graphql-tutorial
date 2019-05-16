@@ -13,14 +13,16 @@ class CommentForm extends Component {
   }
 
   render() {
-    const { title, onClose, stage } = this.props;
+    const {
+      title, onCancel, onOk, stage,
+    } = this.props;
     const { comment, rating } = this.state;
     return (
       <div className={styles.page}>
         <div className={styles.header}>
-          <span onClick={onClose}>取消</span>
+          <span onClick={onCancel}>取消</span>
           <div className={styles.title}>{title}</div>
-          <span onClick={onClose}>确定</span>
+          <span onClick={() => onOk({ comment, rating })}>确定</span>
         </div>
         {stage === 'want' || (
           <div className={styles.ratingContainer}>
@@ -40,7 +42,8 @@ CommentForm.propTypes = {
   title: PropTypes.string.isRequired,
   comment: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
-  onClose: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  onOk: PropTypes.func.isRequired,
   stage: PropTypes.string.isRequired,
 };
 

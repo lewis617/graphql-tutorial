@@ -10,7 +10,7 @@ import styles from './index.less';
 const BookPage = ({ match }) => (
   <Query query={BOOK} variables={{ id: match.params.id }}>
     {({
-      loading, error, data,
+      loading, error, data, refetch,
     }) => {
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error :(</p>;
@@ -18,7 +18,7 @@ const BookPage = ({ match }) => (
       return (
         <div className={styles.page}>
           <BookInfo {...book} />
-          <MyComment {...book.myComment} title={book.title} />
+          <MyComment {...book.myComment} title={book.title} refetch={refetch} />
           <BookTags {...book} />
         </div>
       );
