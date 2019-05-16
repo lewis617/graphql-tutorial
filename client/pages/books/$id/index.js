@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
+import { Link } from 'umi';
 import { BOOK } from '../../../graphql/book';
 import Rating from '../../../components/Rating';
 import styles from './index.less';
@@ -27,7 +28,7 @@ const BookPage = ({ match }) => (
           </div>
           <div className={styles.subTitle}>所属标签</div>
           <div className={styles.tags}>
-            {book.tags.map(t => <div className={styles.tag} key={t}>{t}</div>)}
+            {book.tags.map(t => <Link to={`/books?tag=${t}`} className={styles.tag} key={t}>{t}</Link>)}
           </div>
         </div>
       );
