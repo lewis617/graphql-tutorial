@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import RatingRadio from './RatingRadio';
 import styles from './index.less';
 
 class CommentForm extends Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.state = {
+      rating: props.rating,
+      comment: props.comment,
+    };
+  }
 
   render() {
-    const {
-      title, comment, rating, onClose,
-    } = this.props;
+    const { title, onClose } = this.props;
+    const { comment, rating } = this.state;
     return (
       <div className={styles.page}>
         <div className={styles.header}>
@@ -16,7 +22,9 @@ class CommentForm extends Component {
           <div className={styles.title}>{title}</div>
           <span onClick={onClose}>确定</span>
         </div>
-        <div>{rating}</div>
+        <div className={styles.ratingContainer}>
+          <RatingRadio value={rating} onChange={v => this.setState({ rating: v })} />
+        </div>
         <div>{comment}</div>
       </div>
     );
