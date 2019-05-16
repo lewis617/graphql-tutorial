@@ -28,7 +28,7 @@ const BookPage = ({ match }) => (
           </div>
           <div className={styles.subTitle}>所属标签</div>
           <div className={styles.tags}>
-            {book.tags.map(t => <Link to={`/books?tag=${t}`} className={styles.tag} key={t}>{t}</Link>)}
+            {book.tags.map(t => <div className={styles.tag} key={t}><Link to={`/books?tag=${t}`}>{t}</Link></div>)}
           </div>
         </div>
       );
