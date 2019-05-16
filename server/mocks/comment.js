@@ -7,8 +7,8 @@ module.exports = {
     content: () => casual.sentences(5),
     updatedAt: () => casual.date(),
   }),
-  Comments: () => ({
+  Comments: (parent, args) => ({
     total: () => casual.integer(0, 1000),
-    list: () => new MockList(5),
+    list: () => new MockList(args.limit),
   }),
 };

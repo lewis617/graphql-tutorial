@@ -1,6 +1,6 @@
-const { merge } = require('lodash');
+const deepmerge = require('deepmerge');
 const user = require('./user');
 const book = require('./book');
 const comment = require('./comment');
 
-module.exports = merge(comment, user, book);
+module.exports = deepmerge.all([comment, user, book]);

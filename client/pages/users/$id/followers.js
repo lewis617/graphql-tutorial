@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
+import deepmerge from 'deepmerge';
 import FollowUsers from '../../../components/FollowUsers';
 import { USER_FOLLOWERS } from '../../../graphql/user';
 
@@ -23,16 +24,7 @@ const Followers = ({ match }) => (
               variables: {
                 skip: data.user.followers.length,
               },
-              updateQuery: (prev, { fetchMoreResult }) => {
-                if (!fetchMoreResult) return prev;
-                return {
-                  ...prev,
-                  user: {
-                    ...prev.user,
-                    followers: prev.user.followers.concat(fetchMoreResult.user.followers),
-                  },
-                };
-              },
+              updateQuery: (prev, { fetchMoreResult }) => deepmerge(prev, fetchMoreResult),
             });
           }}
         />

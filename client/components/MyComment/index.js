@@ -81,13 +81,14 @@ class MyComment extends Component {
 }
 
 MyComment.defaultProps = {
+  stage: null,
   rating: 0,
   content: '',
-  _id: undefined,
+  _id: null,
 };
 
 MyComment.propTypes = {
-  stage: PropTypes.string.isRequired,
+  stage: PropTypes.string,
   rating: PropTypes.number,
   content: PropTypes.string,
   _id: PropTypes.string,

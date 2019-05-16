@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
+import deepmerge from 'deepmerge';
 import { BOOKS } from '../../graphql/book';
 import Books from '../../components/Books';
 import styles from './index.less';
@@ -42,15 +43,7 @@ const BooksPage = ({ location }) => {
                   variables: {
                     skip: data.books.list.length,
                   },
-                  updateQuery: (prev, { fetchMoreResult }) => {
-                    if (!fetchMoreResult) { return prev; }
-                    return {
-                      books: {
-                        ...prev.books,
-                        list: prev.books.list.concat(fetchMoreResult.books.list),
-                      },
-                    };
-                  },
+                  updateQuery: (prev, { fetchMoreResult }) => deepmerge(prev, fetchMoreResult),
                 });
               }}
             />

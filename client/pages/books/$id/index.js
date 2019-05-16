@@ -9,7 +9,7 @@ import MyComment from '../../../components/MyComment';
 import styles from './index.less';
 
 const BookPage = ({ match }) => (
-  <Query query={BOOK} variables={{ id: match.params.id }}>
+  <Query query={BOOK} variables={{ id: match.params.id, limit: 5 }}>
     {({
       loading, error, data, refetch,
     }) => {
@@ -26,7 +26,7 @@ const BookPage = ({ match }) => (
             refetch={refetch}
           />
           <BookTags {...book} />
-          <BookComments {...book.comments} title={book.title} />
+          <BookComments {...book.comments} title={book.title} bookId={match.params.id} />
         </div>
       );
     }}

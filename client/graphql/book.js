@@ -15,7 +15,7 @@ export const BOOKS = gql`
 `;
 
 export const BOOK = gql`
-  query($id: ID!){
+  query($id: ID!, $limit: Int, $skip: Int){
     book(_id: $id){
       title
       coverUrl
@@ -29,9 +29,33 @@ export const BOOK = gql`
         content
         stage
       }
-      comments {
+      comments(limit: $limit, skip: $skip) {
         total
         list{
+          _id
+          rating
+          content
+          updatedAt
+          commentator{
+            name
+            avatarUrl
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const BOOK_COMMENTS = gql`
+  query($id: ID!, $limit: Int, $skip: Int){
+    book(_id: $id){
+      title
+      coverUrl
+      rating
+      comments(limit: $limit, skip: $skip) {
+        total
+        list{
+          _id
           rating
           content
           updatedAt

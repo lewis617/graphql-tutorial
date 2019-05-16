@@ -18,7 +18,7 @@ module.exports = gql`
     author: String!
     price: String!
     myComment: Comment!
-    comments: Comments
+    comments(limit: Int skip: Int): Comments
   }
   type Books {
     total: Int!
