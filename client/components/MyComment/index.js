@@ -8,15 +8,20 @@ import styles from './index.less';
 class MyComment extends Component {
   state = { visible: true }
 
+  toggle = () => {
+    const { visible } = this.state;
+    this.setState({ visible: !visible });
+  }
+
   render() {
     const { stage, rating, comment } = this.props;
     const { visible } = this.state;
     return (
       <div>
         <div className={styles.commentBtns}>
-          <CommentBtn disabled={stage === 'want'}>想读</CommentBtn>
-          <CommentBtn disabled={stage === 'reading'}>在读</CommentBtn>
-          <CommentBtn disabled={stage === 'done'}>读过</CommentBtn>
+          <CommentBtn disabled={stage === 'want'} onClick={this.toggle}>想读</CommentBtn>
+          <CommentBtn disabled={stage === 'reading'} onClick={this.toggle}>在读</CommentBtn>
+          <CommentBtn disabled={stage === 'done'} onClick={this.toggle}>读过</CommentBtn>
         </div>
         {stage === 'never'
           || (
@@ -35,13 +40,13 @@ class MyComment extends Component {
             <div className={styles.comment}>
               {comment}
               （
-              <span>修改</span>
+              <span onClick={this.toggle}>修改</span>
               {' '}
               <span>删除</span>
               ）
             </div>
           )}
-        {visible && <CommentForm {...this.props} />}
+        {visible && <CommentForm {...this.props} onClose={this.toggle} />}
       </div>
     );
   }

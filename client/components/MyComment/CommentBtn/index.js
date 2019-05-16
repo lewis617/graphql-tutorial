@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './index.less';
 
-const CommentBtn = ({ children, disabled }) => (
-  <div className={`${styles.btn} ${styles[disabled ? 'disabled' : 'abled']}`}>
+const CommentBtn = ({ children, disabled, ...rest }) => (
+  <div className={`${styles.btn} ${styles[disabled ? 'disabled' : 'abled']}`} {...rest}>
     {children}
   </div>
 );
