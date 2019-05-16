@@ -7,6 +7,7 @@ import { setContext } from 'apollo-link-context';
 import { ApolloProvider } from 'react-apollo';
 import { onError } from 'apollo-link-error';
 import { ToastContainer, toast } from 'react-toastify';
+import { router } from 'umi';
 import 'react-toastify/dist/ReactToastify.css';
 import Nav from '../components/Nav';
 
@@ -26,6 +27,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
     graphQLErrors.forEach(({ message, path }) => {
       if (path[0] === 'currentUser') { return; }
+      if (message === 'jwt must be provided') { router.push('/login'); return; }
       toast.error(message);
     });
   }
