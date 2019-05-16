@@ -16,7 +16,7 @@ class MyComment extends Component {
 
   render() {
     const {
-      stage, rating, comment, _id, bookId, refetch,
+      stage, rating, content, _id, bookId, refetch,
     } = this.props;
     const { visible } = this.state;
     return (
@@ -39,7 +39,7 @@ class MyComment extends Component {
         }
         {stage && (
           <div className={styles.comment}>
-            {comment}
+            {content}
             （
             <span onClick={() => this.setVisible(stage)}>修改</span>
             {' '}
@@ -82,14 +82,14 @@ class MyComment extends Component {
 
 MyComment.defaultProps = {
   rating: 0,
-  comment: '',
+  content: '',
   _id: undefined,
 };
 
 MyComment.propTypes = {
   stage: PropTypes.string.isRequired,
   rating: PropTypes.number,
-  comment: PropTypes.string,
+  content: PropTypes.string,
   _id: PropTypes.string,
   refetch: PropTypes.func.isRequired,
   bookId: PropTypes.string.isRequired,

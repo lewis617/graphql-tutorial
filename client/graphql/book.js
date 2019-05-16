@@ -26,7 +26,7 @@ export const BOOK = gql`
       myComment{
         _id
         rating
-        comment
+        content
         stage
       }
     }

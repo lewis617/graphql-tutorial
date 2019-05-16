@@ -8,7 +8,7 @@ module.exports = gql`
   input UpdateCommentInput{
     _id: ID
     rating: Float
-    comment: String
+    content: String
     stage: Stage!
     bookId: ID!
   }
@@ -22,7 +22,7 @@ module.exports = gql`
   type Comment{
     _id: ID
     rating: Int
-    comment: String
+    content: String
     stage: Stage
     bookId: ID!
     commentator: User

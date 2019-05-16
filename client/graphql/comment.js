@@ -5,7 +5,7 @@ export const UPDATE_COMMENT = gql`
     updateComment(comment:$comment){
       _id
       rating
-      comment
+      content
       stage
     }
   }

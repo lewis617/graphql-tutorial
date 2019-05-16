@@ -8,7 +8,7 @@ module.exports = {
         me = context.getUser();
       } catch (err) { console.error(err); }
       const defaultComment = {
-        stage: null, rating: null, comment: null, bookId: null, _id: null,
+        stage: null, rating: null, content: null, bookId: null, _id: null,
       };
       if (!me) { return defaultComment; }
       const comment = await Comment.findOne({ bookId: _id, userId: me._id });
