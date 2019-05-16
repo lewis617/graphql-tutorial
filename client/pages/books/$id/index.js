@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import { BOOK } from '../../../graphql/book';
-import Rating from '../../../components/Rating';
+import BookInfo from '../../../components/BookInfo';
 import BookTags from '../../../components/BookTags';
 import MyComment from '../../../components/MyComment';
 import styles from './index.less';
@@ -17,16 +17,7 @@ const BookPage = ({ match }) => (
       const { book } = data;
       return (
         <div className={styles.page}>
-          <div className={styles.title}>{book.title}</div>
-          <div className={styles.body}>
-            <div className={styles.left}>
-              <Rating rating={book.rating} size="medium" />
-              <div className={styles.info}>
-                {`${book.author} / ${book.price} 元`}
-              </div>
-            </div>
-            <img src={book.coverUrl} alt={book.title} />
-          </div>
+          <BookInfo {...book} />
           <MyComment {...book.myComment} />
           <BookTags {...book} />
         </div>
