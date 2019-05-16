@@ -18,7 +18,7 @@ const BookPage = ({ match }) => (
       return (
         <div className={styles.page}>
           <BookInfo {...book} />
-          <MyComment {...book.myComment} />
+          <MyComment {...book.myComment} title={book.title} />
           <BookTags {...book} />
         </div>
       );

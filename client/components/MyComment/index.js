@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CommentBtn from './CommentBtn';
+import CommentForm from './CommentForm';
 import Rating from '../Rating';
 import styles from './index.less';
 
 class MyComment extends Component {
-  state = {}
+  state = { visible: true }
 
   render() {
     const { stage, rating, comment } = this.props;
+    const { visible } = this.state;
     return (
       <div>
         <div className={styles.commentBtns}>
@@ -39,6 +41,7 @@ class MyComment extends Component {
               ）
             </div>
           )}
+        {visible && <CommentForm {...this.props} />}
       </div>
     );
   }
