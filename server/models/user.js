@@ -11,8 +11,6 @@ const userSchema = new Schema({
     type: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     select: false,
   },
-  followingCount: { type: Number, required: true, default: 0 },
-  followersCount: { type: Number, required: true, default: 0 },
 });
 
 module.exports = model('User', userSchema);

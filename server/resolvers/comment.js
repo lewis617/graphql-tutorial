@@ -4,10 +4,7 @@ const Book = require('../models/book');
 module.exports = {
   Book: {
     myComment: async ({ _id }, args, context) => {
-      let me;
-      try {
-        me = context.getUser();
-      } catch (err) { console.error(err); }
+      const me = context.user;
       const defaultComment = {
         stage: null, rating: null, content: null, bookId: null, _id: null,
       };
@@ -32,7 +29,7 @@ module.exports = {
   Mutation: {
     updateComment: async (parent, args, context) => {
       const { comment: { _id, ...rest } } = args;
-      const commentator = context.getUser()._id;
+      const commentator = context.user._id;
       const book = await Book.findById(rest.bookId);
       const totalRating = book.rating * book.ratingNumbers;
       if (_id) {
@@ -46,7 +43,7 @@ module.exports = {
       return Comment.create({ ...rest, commentator });
     },
     deleteComment: async (parent, args) => {
-      const comment = Comment.findByIdAndDelete(args.comment._id);
+      const comment = await Comment.findByIdAndDelete(args.comment._id);
       const book = await Book.findById(comment.bookId);
       const totalRating = book.rating * book.ratingNumbers;
       book.ratingNumbers -= 1;
