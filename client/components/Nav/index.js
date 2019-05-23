@@ -31,7 +31,7 @@ class Nav extends PureComponent {
 
   logout = () => {
     window.localStorage.removeItem('token');
-    router.go(0);
+    router.push('/login');
   }
 
   render() {

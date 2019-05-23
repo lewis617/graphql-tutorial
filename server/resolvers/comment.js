@@ -5,17 +5,14 @@ module.exports = {
   Book: {
     myComment: async ({ _id }, args, context) => {
       const me = context.user;
-      const defaultComment = {
-        stage: null, rating: null, content: null, bookId: null, _id: null,
-      };
-      if (!me) { return defaultComment; }
+      if (!me) { return null; }
       const comment = await Comment.findOne({ bookId: _id, commentator: me._id });
-      return comment || defaultComment;
+      return comment;
     },
     comments: (parent, args) => ({ ...parent, ...args }),
   },
   Comments: {
-    total: args => Comment.count({ bookId: args._id }),
+    total: args => Comment.countDocuments({ bookId: args._id }),
     list: args => Comment
       .find({ bookId: args._id })
       .limit(args.limit || 10)
@@ -33,9 +30,10 @@ module.exports = {
       const book = await Book.findById(rest.bookId);
       const totalRating = book.rating * book.ratingNumbers;
       if (_id) {
-        book.rating = (totalRating + rest.rating) / book.ratingNumbers;
+        const comment = await Comment.findByIdAndUpdate(_id, rest);
+        book.rating = (totalRating + rest.rating - comment.rating) / book.ratingNumbers;
         book.save();
-        return Comment.findByIdAndUpdate(_id, rest, { new: true });
+        return rest;
       }
       book.ratingNumbers += 1;
       book.rating = (totalRating + rest.rating) / book.ratingNumbers;
@@ -47,7 +45,8 @@ module.exports = {
       const book = await Book.findById(comment.bookId);
       const totalRating = book.rating * book.ratingNumbers;
       book.ratingNumbers -= 1;
-      book.rating = (totalRating - comment.rating) / book.ratingNumbers;
+      book.rating = book.ratingNumbers > 0
+        ? ((totalRating - comment.rating) / book.ratingNumbers) : 0;
       book.save();
       return comment;
     },

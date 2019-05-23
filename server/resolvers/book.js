@@ -6,7 +6,7 @@ module.exports = {
     book: (parent, args) => Book.findById(args._id),
   },
   Books: {
-    total: args => Book.count({ title: new RegExp(args.q), tags: { $in: args.tag || /^/ } }),
+    total: args => Book.countDocuments({ title: new RegExp(args.q), tags: { $in: args.tag || /^/ } }),
     list: args => Book
       .find({ title: new RegExp(args.q), tags: { $in: args.tag || /^/ } })
       .limit(args.limit || 10)
@@ -14,6 +14,7 @@ module.exports = {
   },
   Mutation: {
     createBooks: (parent, args) => Book.create(args.books),
+    updateBook: (parent, args) => Book.findByIdAndUpdate(args.book._id, args.book),
     deleteAllBooks: () => Book.deleteMany({}),
   },
 };

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { router } from 'umi';
 import { ApolloConsumer } from 'react-apollo';
 import { toast } from 'react-toastify';
 import { LOGIN } from '../../graphql/user';
@@ -17,13 +16,13 @@ class Login extends Component {
       variables: { user: { name, password } },
     });
     window.localStorage.setItem('token', token);
-    router.goBack();
+    window.location.replace(document.referrer);
   }
 
   render() {
     return (
       <div className={styles.loginContainer}>
-        <div className={styles.loginCancel} onClick={() => router.goBack()} />
+        <div className={styles.loginCancel} onClick={() => window.history.back()} />
         <div className={styles.title}>登录豆瓣</div>
         <div className={styles.tips}>
           登录注册表示同意
