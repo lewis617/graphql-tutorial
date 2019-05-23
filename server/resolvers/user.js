@@ -8,13 +8,6 @@ module.exports = {
   Query: {
     user: async (parent, args) => User.findById(args.user._id),
     users: () => User.find(),
-    login: async (parent, args) => {
-      const user = await User.findOne(args.user);
-      if (!user) { throw new AuthenticationError('用户名或密码不正确'); }
-      const { _id, name } = user;
-      const token = jsonwebtoken.sign({ _id, name }, secret, { expiresIn: '1d' });
-      return { token };
-    },
     currentUser: (parent, args, context) => context.user,
   },
   User: {
@@ -66,6 +59,13 @@ module.exports = {
     deleteUser: (parent, args, context) => {
       if (args.user._id !== context.user._id) { throw new AuthenticationError('没有权限'); }
       return User.findByIdAndRemove(args.user._id);
+    },
+    login: async (parent, args) => {
+      const user = await User.findOne(args.user);
+      if (!user) { throw new AuthenticationError('用户名或密码不正确'); }
+      const { _id, name } = user;
+      const token = jsonwebtoken.sign({ _id, name }, secret, { expiresIn: '1d' });
+      return { token, _id, name };
     },
     follow: async (parent, args, context) => {
       const me = await User.findById(context.user._id).select('+following');

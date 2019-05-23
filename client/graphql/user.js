@@ -63,9 +63,11 @@ export const CURRENT_USER = gql`
 `;
 
 export const LOGIN = gql`
-  query($user: LoginInput!){
+  mutation($user: LoginInput!){
     login(user: $user){
       token
+      _id
+      name
     }
   }
 `;

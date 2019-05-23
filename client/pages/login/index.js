@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
-import { ApolloConsumer } from 'react-apollo';
+import { Mutation } from 'react-apollo';
 import { toast } from 'react-toastify';
-import { LOGIN } from '../../graphql/user';
+import { LOGIN, CURRENT_USER } from '../../graphql/user';
 import styles from './index.less';
 
 class Login extends Component {
   state = {}
 
-  handleSubmit = async (client) => {
+  handleSubmit = async (login) => {
     const name = this.nameInput.value;
     const password = this.pswInput.value;
     if (!name || !password) { toast.error('请填写用户名或者密码'); return; }
-    const { data: { login: { token } } } = await client.query({
+    const { data: { login: { token } } } = await login({
       query: LOGIN,
       variables: { user: { name, password } },
     });
     window.localStorage.setItem('token', token);
-    window.location.replace(document.referrer);
+    window.history.back();
   }
 
   render() {
@@ -33,11 +33,19 @@ class Login extends Component {
           <input type="text" name="name" placeholder="用户名" ref={(el) => { this.nameInput = el; }} />
           <input type="password" name="password" placeholder="密码" ref={(el) => { this.pswInput = el; }} />
         </div>
-        <ApolloConsumer>
-          {client => (
-            <div className={styles.submit} onClick={() => this.handleSubmit(client)}>登录</div>
+        <Mutation
+          mutation={LOGIN}
+          update={(cache, { data: { login: { _id, name } } }) => {
+            cache.writeQuery({
+              query: CURRENT_USER,
+              data: { currentUser: { _id, name, __typename: 'User' } },
+            });
+          }}
+        >
+          {login => (
+            <div className={styles.submit} onClick={() => this.handleSubmit(login)}>登录</div>
           )}
-        </ApolloConsumer>
+        </Mutation>
 
       </div>
     );

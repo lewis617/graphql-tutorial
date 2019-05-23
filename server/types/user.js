@@ -4,13 +4,13 @@ module.exports = gql`
   type Query {
     user(user: UserIdInput): User!
     users: [User]!
-    login(user: LoginInput!): Token!
     currentUser: User
   }
   type Mutation {
     createUser(user: CreateUserInput!): User!
     updateUser(user: UpdateUserInput!): User!
     deleteUser(user: UserIdInput!): User!
+    login(user: LoginInput!): UserWithToken!
     follow(user: UserIdInput): IsFollowing!
   }
   type User {
@@ -26,9 +26,11 @@ module.exports = gql`
     followingCount: Int
     followersCount: Int
   }
-  type Token {
+  type UserWithToken {
     "JWT Token，放在 Header 中传进来"
     token: String!
+    _id: ID!
+    name: String
   }
   type IsFollowing{
     isFollowing: Boolean

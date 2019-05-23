@@ -6,45 +6,45 @@ import styles from './index.less';
 
 class Nav extends PureComponent {
   state = {
-    show: false,
+    visible: false,
   }
 
-  toggleMenuContainer = () => this.setState(prev => ({ show: !prev.show }))
+  toggle = () => this.setState(prev => ({ visible: !prev.visible }))
 
   handleSubmit = (e) => {
     e.preventDefault();
     const { value } = this.input;
-    this.toggleMenuContainer();
+    this.toggle();
     router.push(`/books/?q=${value}`);
     this.input.value = '';
   }
 
   gotoLogin = () => {
-    this.toggleMenuContainer();
+    this.toggle();
     router.push('/login');
   }
 
   gotoUserPage = (id) => {
-    this.toggleMenuContainer();
+    this.toggle();
     router.push(`/users/${id}`);
   }
 
   logout = () => {
     window.localStorage.removeItem('token');
-    router.push('/login');
+    window.location.reload();
   }
 
   render() {
-    const { show } = this.state;
+    const { visible } = this.state;
     return (
       <div>
         <div className={styles.nav}>
           <Link to="/"><div className={styles.logo} /></Link>
-          <div className={styles.menu} onClick={this.toggleMenuContainer} />
+          <div className={styles.menu} onClick={this.toggle} />
         </div>
-        <div className={styles.menuContainer} style={{ display: show ? 'block' : 'none' }}>
+        <div className={styles.menuContainer} style={{ display: visible ? 'block' : 'none' }}>
           <div>
-            <div className={styles.close} onClick={this.toggleMenuContainer}>关闭</div>
+            <div className={styles.close} onClick={this.toggle}>关闭</div>
             <form onSubmit={this.handleSubmit}>
               <input className={styles.search} type="text" ref={(el) => { this.input = el; }} />
             </form>
