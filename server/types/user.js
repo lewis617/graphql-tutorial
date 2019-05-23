@@ -5,7 +5,7 @@ module.exports = gql`
     user(user: UserIdInput): User!
     users: [User]!
     login(user: LoginInput!): Token!
-    currentUser: User!
+    currentUser: User
   }
   type Mutation {
     createUser(user: CreateUserInput!): User!

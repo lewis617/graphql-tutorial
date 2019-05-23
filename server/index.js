@@ -15,14 +15,14 @@ const server = new ApolloServer({
   mocks,
   mockEntireSchema: false,
   context: ({ req }) => {
-    let user;
+    let user = null;
     try {
       const { authorization } = req.headers;
       const token = authorization && (authorization.split(' ')[0] === 'Bearer') && authorization.split(' ')[1];
       const { _id, name } = jsonwebtoken.verify(token, secret);
       user = { _id, name };
-    } finally {}// eslint-disable-line
-    return user;
+    } catch (err){ } // eslint-disable-line
+    return { user };
   },
 });
 
